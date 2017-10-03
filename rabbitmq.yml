@@ -1,5 +1,5 @@
 ---
-- hosts: rabbitmq
+- hosts: stageserver
   become: true
   become_method: sudo
   vars:
