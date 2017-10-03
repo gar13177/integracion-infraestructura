@@ -1,0 +1,12 @@
+---
+- hosts: stageserver
+  become: true
+  become_method: sudo
+  
+  tasks:
+  - name: Add docker apt keys
+    apt_key: keyserver=keyserver.ubuntu.com id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+  - name: Update apt
+    apt_repository: repo='deb https://get.docker.com docker main' state=present
+  - name: Install Docker
+    apt: pkg=lxc-docker update_cache=yes
