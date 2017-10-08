@@ -1,0 +1,14 @@
+---
+- hosts: stage
+  remote_user: ubuntu
+  become: true
+  become_method: sudo
+  
+  tasks:
+  - name: Install pip
+    apt: 
+      name: python3-pip 
+  - name: Install docker-py
+    pip:
+      name: docker-py
+...
