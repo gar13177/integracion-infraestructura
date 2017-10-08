@@ -7,12 +7,12 @@
   tasks:
   - name: Pull image
     docker_image:
-      name: gar13177/integracion-ht4-mic
+      name: gar13177/integracion-ht4-db
       state: present
   - name: Create docker container
     docker_container:
-      name: ht4_mic_ped
-      image: gar13177/integracion-ht4-mic
+      name: ht4_mic_db
+      image: gar13177/integracion-ht4-db
       state: started
       network_mode: host
 ...

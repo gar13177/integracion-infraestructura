@@ -11,5 +11,5 @@
       password: "{{ docker_hub_password }}"
       email: "{{ docker_hub_email }}"
   - name: Commit contenedor de docker
-    command: "docker commit ht4_mic_ped gar13177/integracion-ht4-mic"
+    command: "docker commit ht4_mic_db gar13177/integracion-ht4-db"
 ...

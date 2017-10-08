@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ansible-playbook  staging/microservicio-pedidos/docker_commit.yml --vault-password-file secrets/pass
+ansible-playbook  staging/dbapi/docker_commit.yml --vault-password-file secrets/pass
