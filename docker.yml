@@ -1,12 +1,28 @@
 ---
-- hosts: stageserver
+- hosts: stage
+  remote_user: ubuntu
   become: true
   become_method: sudo
   
   tasks:
-  - name: Add docker apt keys
-    apt_key: keyserver=keyserver.ubuntu.com id=36A1D7869245C8950F966E92D8576A8BA88D21E9
-  - name: Update apt
-    apt_repository: repo='deb https://get.docker.com docker main' state=present
+  - name: Install packages to allow apt to use a repository over HTTPS
+    apt: name={{ item }} state=installed
+    with_items:
+    - apt-transport-https
+    - ca-certificates 
+    - curl 
+    - software-properties-common    
+  - name: Add Docker’s official GPG key
+    shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - name: Add Docker Repository
+    shell: "add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\""
+  - name: Update apt-get
+    command: apt-get update
+    #apt: 
+      #update_cache: yes
   - name: Install Docker
-    apt: pkg=lxc-docker update_cache=yes
+    apt: 
+      name: docker-ce
+  - name: add user to docker
+    command: usermod -aG docker ubuntu
+...
