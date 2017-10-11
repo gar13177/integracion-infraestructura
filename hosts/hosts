@@ -1,2 +1,2 @@
 [stage]
-ec2-34-214-198-139.us-west-2.compute.amazonaws.com ansible_python_interpreter=/usr/bin/python3
+172.31.16.163 ansible_python_interpreter=/usr/bin/python3
